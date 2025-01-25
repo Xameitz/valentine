@@ -3,27 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine Request</title>
+  <title>Be My Valentine? 💕</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    * {
       margin: 0;
-      background-color: #ffe6e6;
-      text-align: center;
-      padding: 20px;
+      padding: 0;
       box-sizing: border-box;
     }
 
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff6b6b, #ff99cc);
+      text-align: center;
+      padding: 15px;
+      overflow: hidden;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 95%;
+      max-width: 350px;
+      text-align: center;
+    }
+
     h1 {
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: #ff3366;
-      text-shadow: 2px 2px #ff99aa;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 3px rgba(255, 51, 102, 0.2);
     }
 
     .buttons {
@@ -31,73 +46,81 @@
       justify-content: center;
       gap: 15px;
       width: 100%;
-      max-width: 300px;
+      margin-top: 20px;
     }
 
     button {
       flex: 1;
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 0;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.3s;
-    }
-
-    button:hover {
-      transform: scale(1.1);
+      transition: all 0.3s ease;
+      max-width: 120px;
     }
 
     .yes {
-      background-color: #ff99cc;
+      background-color: #ff69b4;
       color: white;
     }
 
     .yes:hover {
-      background-color: #ff6699;
+      background-color: #ff1493;
+      transform: scale(1.05);
     }
 
     .no {
-      background-color: #cccccc;
-      color: black;
+      background-color: #e0e0e0;
+      color: #333;
     }
 
     .no:hover {
-      background-color: #999999;
+      background-color: #d3d3d3;
+      transform: scale(1.05);
     }
 
     .plea {
       color: #ff3366;
-      margin-top: 20px;
-      font-size: 1.3rem;
+      margin-top: 15px;
+      font-size: 1rem;
       display: none;
-      animation: shake 0.5s ease-in-out infinite;
+      animation: pulse 1s infinite;
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 375px) {
+      .container {
+        padding: 20px;
+        width: 98%;
+      }
+
       h1 {
         font-size: 1.5rem;
       }
+
       button {
-        font-size: 1rem;
-        padding: 8px 15px;
+        font-size: 0.9rem;
+        padding: 10px 0;
+        max-width: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <h1 id="valentineText">Will you be my Valentine? 💕</h1>
-  <div class="buttons">
-    <button class="yes" onclick="sayYes()">Yes</button>
-    <button class="no" id="noButton" onclick="sayNo()">No</button>
+  <div class="container">
+    <h1 id="valentineText">Will you be my Valentine? 💕</h1>
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">Yes</button>
+      <button class="no" id="noButton" onclick="sayNo()">No</button>
+    </div>
+    <p id="plea" class="plea">Please say yes 🥺💕</p>
   </div>
-  <p id="plea" class="plea">Pleasee say yes 🥺💕</p>
 
   <script>
     let noPressCount = 0;
@@ -107,7 +130,7 @@
     const buttonsContainer = document.querySelector('.buttons');
 
     function sayYes() {
-      valentineText.textContent = "Yayyyy Thank you soo muchh babyy im soo happy! 😍❤️";
+      valentineText.textContent = "Yayyyy!!! Thank you so much babyyy! 😍❤️";
       buttonsContainer.style.display = 'none';
       plea.style.display = 'none';
     }
@@ -121,7 +144,7 @@
           plea.style.display = 'block';
           break;
         case 2:
-          valentineText.textContent = "I'm so sorry❤️";
+          valentineText.textContent = "I'm so sorry... 💔";
           buttonsContainer.style.display = 'none';
           plea.style.display = 'none';
           break;
