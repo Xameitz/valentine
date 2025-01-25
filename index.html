@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Request</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffe6e6;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ff3366;
+      text-shadow: 2px 2px #ff99aa;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    button {
+      flex: 1;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, background-color 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background-color: #ff99cc;
+      color: white;
+    }
+
+    .yes:hover {
+      background-color: #ff6699;
+    }
+
+    .no {
+      background-color: #cccccc;
+      color: black;
+    }
+
+    .no:hover {
+      background-color: #999999;
+    }
+
+    .plea {
+      color: #ff3366;
+      margin-top: 20px;
+      font-size: 1.3rem;
+      display: none;
+      animation: shake 0.5s ease-in-out infinite;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="valentineText">Will you be my Valentine? 💕</h1>
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">Yes</button>
+    <button class="no" id="noButton" onclick="sayNo()">No</button>
+  </div>
+  <p id="plea" class="plea">Pleasee say yes 🥺💕</p>
+
+  <script>
+    let noPressCount = 0;
+    const valentineText = document.getElementById('valentineText');
+    const plea = document.getElementById('plea');
+    const noButton = document.getElementById('noButton');
+    const buttonsContainer = document.querySelector('.buttons');
+
+    function sayYes() {
+      valentineText.textContent = "Yayyyy Thank you soo muchh babyy im soo happy! 😍❤️";
+      buttonsContainer.style.display = 'none';
+      plea.style.display = 'none';
+    }
+
+    function sayNo() {
+      noPressCount++;
+
+      switch(noPressCount) {
+        case 1:
+          valentineText.textContent = "Are you sure? 😢";
+          plea.style.display = 'block';
+          break;
+        case 2:
+          valentineText.textContent = "I'm so sorry❤️";
+          buttonsContainer.style.display = 'none';
+          plea.style.display = 'none';
+          break;
+      }
+
+      noButton.style.transform = `scale(${1 - (noPressCount * 0.1)})`;
+    }
+  </script>
+</body>
+</html>
