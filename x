@@ -153,7 +153,7 @@
     });
 
     function sayYes() {
-      valentineText.textContent = "Yayyyy!!! Thank you so much babyyy! 😍❤️";
+      valentineText.textContent = "Yayyyy!!! I love you so much babyyy! 😍❤️";
       buttonsContainer.style.display = 'none';
       plea.style.display = 'none';
     }
